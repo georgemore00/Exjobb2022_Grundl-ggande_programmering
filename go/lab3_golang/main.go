@@ -18,20 +18,20 @@ type Medicine struct {
 func main() {
 	const MAX_SIZE int = 10000
 	var nrOfMedicines int = 0
-	var medicines [10000]Medicine = [MAX_SIZE]Medicine{}
+	var medicines [MAX_SIZE]Medicine = [MAX_SIZE]Medicine{}
 	var nrOfFoundInSearch int = 0
 	var foundIndex int = -1
 	filePath := ""
 
 	fmt.Println("Apoteks verktyg 2.0")
-	fmt.Println("Vanligen ange filnamn: ")
+	fmt.Println("Vänligen ange filnamn: ")
 	fmt.Scan(&filePath)
 	readFromFile(filePath, medicines[:], &nrOfMedicines, MAX_SIZE)
 
 	option := ""
 	for option != "q" {
 
-		fmt.Print("RPSD?")
+		fmt.Print("RPSDQ?")
 		fmt.Scan(&option)
 
 		switch option {
@@ -46,7 +46,7 @@ func main() {
 			deleteMedicine(medicines[:], &nrOfMedicines, &nrOfFoundInSearch, &foundIndex)
 		case "q":
 			writeToFile(filePath, medicines[:], nrOfMedicines)
-			fmt.Println("Exiting Pharmacy tool 2.0")
+			fmt.Println("Stänger Pharmacy tool 2.0")
 			break
 		default:
 			fmt.Println(option)
@@ -58,7 +58,7 @@ func main() {
 func readFromFile(filePath string, medicines []Medicine, nrOfMedicines *int, MAX_SIZE int) {
 	file, err := os.Open(filePath)
 	if err != nil {
-		fmt.Printf("Kunde inte hitta fil: %s, den kommer skapas vid programslut. \n", filePath)
+		fmt.Printf("Kunde inte hitta fil: %s. Filen kommer skapas vid programslut. \n", filePath)
 		return
 	}
 
@@ -98,7 +98,7 @@ func parseLineToMedicine(line string) Medicine {
 		m.balances[i], err = strconv.Atoi(balances[i])
 	}
 	if err != nil {
-		fmt.Println("malformerad text fil")
+		fmt.Println("Malformerad textfil")
 	}
 	return Medicine{name: name, sizes: m.sizes, balances: m.balances, nrOfSizes: nrOfSizes}
 }
@@ -151,7 +151,7 @@ func registerMedicine(medicines []Medicine, nrOfMedicines *int) {
 	name := ""
 	var size int = -1
 
-	fmt.Println("Registera lakemedel")
+	fmt.Println("Registera läkemedel")
 	for {
 		fmt.Print("Ange namn: ")
 		fmt.Scan(&name)
@@ -173,7 +173,7 @@ func registerMedicine(medicines []Medicine, nrOfMedicines *int) {
 		m.nrOfSizes++
 	}
 
-	*&medicines[*nrOfMedicines] = m
+	medicines[*nrOfMedicines] = m
 	*nrOfMedicines++
 }
 
@@ -191,13 +191,13 @@ func deleteMedicine(medicines []Medicine, nrOfMedicines *int, nrOfFoundInSearch 
 				*nrOfMedicines--
 			}
 		} else {
-			fmt.Println("Du fick inte endast ett alternativ. Vanligen gor en ny sokning.")
+			fmt.Println("Du fick inte endast ett alternativ. Vänligen gör en ny sökning.")
 		}
 	}
 }
 
 func printMedicines(medicines []Medicine, nrOfMedicines int) string {
-	s := fmt.Sprintln("Lakemedel \t Storlekar \t Saldo")
+	s := fmt.Sprintln("Läkemedel \t Storlekar \t Saldo")
 	s += fmt.Sprintln("__________________________________________________")
 
 	for i := 0; i < nrOfMedicines; i++ {
@@ -226,7 +226,7 @@ func search(medicines []Medicine, nrOfMedicines int, nrOfFoundInSearch *int, fou
 	var found []Medicine = make([]Medicine, nrOfMedicines)
 	*nrOfFoundInSearch = 0
 
-	fmt.Println("Soka lakemedel")
+	fmt.Println("Söka läkemedel")
 	fmt.Print("Ange namn: ")
 	fmt.Scan(&name)
 
