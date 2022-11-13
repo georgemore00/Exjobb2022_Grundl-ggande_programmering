@@ -12,14 +12,14 @@ go run main.go
 
 Installera Rust: https://forge.rust-lang.org/infra/other-installation-methods.html
 
-För att skapa en cargo i Rust:
+För att skapa ett Rust projekt med pakethanteraren cargo:
 
 ````
 cargo new ProjectName
 cd ProjectName
 ````
 
-För att builda Rust koden:
+För att bygga Rust koden:
 
 ````
 cargo build
@@ -28,5 +28,5 @@ cargo build
 För att exekvera Rust koden:
 
 ````
-cargo run
+cargo run 
 ````
