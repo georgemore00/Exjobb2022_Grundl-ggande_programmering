@@ -167,7 +167,6 @@ fn print_medicines(medicines: &[Medicine; MAX_SIZE], nr_of_medicines: &i32) -> S
 
     //String kan endast plussas ihop eller appendas med str
     //om två str ska plussas ihop eller appendas med varandra måste en av dem vara owned
-
     for n in 0..*nr_of_medicines as usize {
         // String s += str(owned String.str + &str)
         s += &(medicines[n].name.clone().as_str().to_owned() + "\t\t");
@@ -211,11 +210,33 @@ fn search(medicines: &[Medicine; MAX_SIZE], nr_of_medicines: &i32, nr_of_found_i
     return found;
 }
 
-//Skapar en ny fil om den inte finns, lägger till hello world för tillfället och sparar filen
 fn write_to_file(file_path: &mut String, medicines: &mut [Medicine; MAX_SIZE], nr_of_medicines: &mut i32) {
     let mut file = File::create(&file_path).expect("\nKunde inte skapa filen");
-        file.write_all("Hello World".as_bytes()).expect("Write misslyckades");
-        println!("\nSparar filen: {}", file_path);
+    println!("\nSparar filen: {}", file_path);
+
+    //Lägger in nr_of_medicines högst upp i filen
+    file.write_all(&(nr_of_medicines.clone().to_string().to_owned() + "\n").as_bytes()).expect("Write nr_of_medicines misslyckades");
+
+    for i in 0..*nr_of_medicines as usize{
+        //Lägger in name i filen
+        file.write_all((medicines[i].name.clone().to_string().to_owned() + " ").as_bytes()).expect("Write name misslyckades");
+
+        //Lägger in sizes i filen
+        for j in 0..MAX_SIZE {
+            file.write_all((medicines[i].sizes[j].to_string().to_owned() + ",").as_bytes()).expect("Write sizes misslyckades");
+        }
+        file.write_all((" ").as_bytes()).expect("Write misslyckades");
+
+        //Lägger in balances i filen
+        for j in 0..MAX_SIZE {
+            file.write_all((medicines[i].balances[j].to_string().to_owned() + ",").as_bytes()).expect("Write balances misslyckades");
+        }
+        file.write_all((" ").as_bytes()).expect("Write misslyckades");
+
+        //Lägger in nr_of_sizes i filen
+        file.write_all((medicines[i].nr_of_sizes.clone().to_string().to_owned()).as_bytes()).expect("Write nr_of_sizes misslyckades");
+        file.write_all(("\n").as_bytes()).expect("Write misslyckades");
+    }
 }
 
 //Kan bara hämta och öppna en fil, skapar om det inte finns någon. Saknar hämtning av data för tillfället
