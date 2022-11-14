@@ -46,7 +46,7 @@ func main() {
 			deleteMedicine(medicines[:], &nrOfMedicines, &nrOfFoundInSearch, &foundIndex)
 		case "q":
 			writeToFile(filePath, medicines[:], nrOfMedicines)
-			fmt.Println("Stänger Pharmacy tool 2.0")
+			fmt.Println("Stänger Apoteks verktyg 2.0")
 			break
 		default:
 			fmt.Println(option)
@@ -226,7 +226,7 @@ func search(medicines []Medicine, nrOfMedicines int, nrOfFoundInSearch *int, fou
 	var found []Medicine = make([]Medicine, nrOfMedicines)
 	*nrOfFoundInSearch = 0
 
-	fmt.Println("Söka läkemedel")
+	fmt.Println("Sökning av läkemedel...")
 	fmt.Print("Ange namn: ")
 	fmt.Scan(&name)
 

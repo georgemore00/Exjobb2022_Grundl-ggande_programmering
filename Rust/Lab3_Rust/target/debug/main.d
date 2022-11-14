@@ -1,1 +1,1 @@
-/Users/elev/Documents/Examensarbete/Rust/RustLabb3CProg/target/debug/main: /Users/elev/Documents/Examensarbete/Rust/RustLabb3CProg/src/main.rs
+/Users/elev/Documents/GitHub/Exjobb2022_Grundl-ggande_programmering/Rust/Lab3_Rust/target/debug/main: /Users/elev/Documents/GitHub/Exjobb2022_Grundl-ggande_programmering/Rust/Lab3_Rust/src/main.rs
