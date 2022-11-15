@@ -222,13 +222,13 @@ fn write_to_file(file_path: &mut String, medicines: &mut [Medicine; MAX_SIZE], n
         file.write_all((medicines[i].name.clone().to_string().to_owned() + " ").as_bytes()).expect("Write name misslyckades");
 
         //Lägger in sizes i filen
-        for j in 0..MAX_SIZE {
+        for j in 0..10 {
             file.write_all((medicines[i].sizes[j].to_string().to_owned() + ",").as_bytes()).expect("Write sizes misslyckades");
         }
         file.write_all((" ").as_bytes()).expect("Write misslyckades");
 
         //Lägger in balances i filen
-        for j in 0..MAX_SIZE {
+        for j in 0..10 {
             file.write_all((medicines[i].balances[j].to_string().to_owned() + ",").as_bytes()).expect("Write balances misslyckades");
         }
         file.write_all((" ").as_bytes()).expect("Write misslyckades");
