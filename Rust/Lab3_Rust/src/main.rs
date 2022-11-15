@@ -1,9 +1,8 @@
 use array_init::array_init;
 use std::fs::File;
+use std::io::BufReader;
 use std::io::Write;
 use std::io::Read;
-use std::fs::OpenOptions;
-
 
 #[derive(Debug, Clone)]
 struct Medicine {
@@ -241,15 +240,19 @@ fn write_to_file(file_path: &mut String, medicines: &mut [Medicine; MAX_SIZE], n
 
 //Kan bara hämta och öppna en fil, skapar om det inte finns någon. Saknar hämtning av data för tillfället
 fn read_from_file(file_path: &mut String, medicines: &mut [Medicine; MAX_SIZE], nr_of_medicines: &mut i32) {
-    let file = OpenOptions::new()
-            .read(true)
-            .write(true)
-            .create(true)
-            .open(file_path);
-    /*if !file.is_err(){
+    let file = File::open(&file_path);
+    if !file.is_err(){
         println!("\nÖppnar filen: {}", file_path);
     }
     else {
         println!("\nKunde inte hitta filen: {}Filen kommer skapas vid programslut.", file_path);
-    }*/
+        return;
+    }
+
+    //let buf = BufReader::new(file);
+    let mut content = String::new();
+    file.unwrap().read_to_string(&mut content).expect("Read misslyckades");
+    print!("Content: {}", content);
+    let c = content.split("\n");
+    print!("C: {:?}", c);
 }
