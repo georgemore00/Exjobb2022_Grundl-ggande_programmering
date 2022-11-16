@@ -6,7 +6,7 @@ fn main() {
     println!("Measurement tool 2.0");
 
     loop {
-        println!("VECRQ? ");
+        println!("VECRQ?");
         let mut option: String = String::new();
         std::io::stdin().read_line(&mut option).unwrap();
 
@@ -23,10 +23,9 @@ fn main() {
                 println!("Exit Measurement tool");
                 break;
             },
-            _ => println!("Invalid input, try again.")
+            _ => println!("Invalid input, please try again.")
         };
     }
-
 }
 
 fn view(arr : [i32; 10], size : i32) -> String{
@@ -76,7 +75,7 @@ fn find_min(arr : [i32; 10], size : i32) -> i32 {
     let mut min : i32 = arr[0];
 
     for n in 0..size-1{
-        if arr[(n +1 ) as usize] < min{
+        if arr[(n +1) as usize] < min{
             min = arr[(n+1) as usize];
         }
     }
@@ -112,4 +111,3 @@ fn calc_normalized_values(arr : [i32; 10], size : i32) -> [i32; 10] {
     }
     return normalized_values;
 }
-

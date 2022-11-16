@@ -42,7 +42,8 @@ fn main() {
 
     if velocity >= -2.0 {
 		print!("SUCCESS! Landed at {} m/s", velocity);
-	} else {
+	} 
+    else {
 		print!("FAILED! Crash landed at {} m/s", velocity);
 	}
 }
@@ -57,9 +58,9 @@ fn calc_new_velocity(current_velocity : f64, throttle: f64) -> f64 {
 
 fn get_initial_message() -> String {
     return String::from("
-Lunar decent challenge!
-You will pilot a lunar decent the last 250m.
-Each turn represent 1-second decent time.
-Set the throttle for each turn (0-100)
-Time \t Height \t Velocity \t Throttle? \t")
+    Lunar decent challenge!
+    You will pilot a lunar decent the last 250m.
+    Each turn represent 1-second decent time.
+    Set the throttle for each turn (0-100)
+    Time \t Height \t Velocity \t Throttle? \t")
 }

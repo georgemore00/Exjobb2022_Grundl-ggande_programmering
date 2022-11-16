@@ -1,11 +1,8 @@
 use array_init::array_init;
 use std::fs::File;
-
 use std::io::BufRead;
 use std::io::BufReader;
-
 use std::io::Write;
-
 
 #[derive(Debug, Clone)]
 struct Medicine {
@@ -42,12 +39,10 @@ fn main() {
     println!("\nVänligen ange filnamn: ");
     std::io::stdin().read_line(&mut file_path).unwrap();
 
-
     let file_read_result = read_from_file(&mut file_path, &mut medicines, &mut nr_of_medicines);
     if file_read_result.is_err() {
-        println!("Kunde inte hitta fil: {}\nfilen kommer skapas vid programslut", file_path);
+        println!("Kunde inte hitta filen: {}Filen kommer skapas vid programslut", file_path);
     }
-
 
     loop {
         println!("\nRPSDQ?");
@@ -174,7 +169,7 @@ fn delete_medicine(medicines: &mut [Medicine; MAX_SIZE], nr_of_medicines: &mut i
 }
 
 fn print_medicines(medicines: &[Medicine; MAX_SIZE], nr_of_medicines: &i32) -> String {
-    let mut s: String = String::from("Läkemedel \t Storlekar \t Saldo\n");
+    let mut s: String = String::from("\nLäkemedel \t Storlekar \t Saldo\n");
     s += "__________________________________________________\n";
 
     //String kan endast plussas ihop eller appendas med str
@@ -226,7 +221,6 @@ fn write_to_file(file_path: &mut String, medicines: &mut [Medicine; MAX_SIZE], n
     let mut file = File::create(&file_path).expect("\nKunde inte skapa filen");
     println!("\nSparar filen: {}", file_path);
 
-
     //Lägger in nr_of_medicines högst upp i filen
     file.write_all(&(nr_of_medicines.clone().to_string().to_owned() + "\n").as_bytes()).expect("Write nr_of_medicines misslyckades");
 
@@ -254,20 +248,19 @@ fn write_to_file(file_path: &mut String, medicines: &mut [Medicine; MAX_SIZE], n
 
 fn read_from_file(file_path: &mut String, medicines: &mut [Medicine; MAX_SIZE], nr_of_medicines: &mut i32) -> std::io::Result<()> {
     let file = File::open(&file_path)?;
-
     let mut reader = BufReader::new(file);
     let mut line = String::new();
-    reader.read_line(&mut line).unwrap();
 
+    reader.read_line(&mut line).unwrap();
     let first_line = line.trim().parse::<usize>().unwrap();
+
     if first_line > MAX_SIZE {
         println!("För många läkemedel i filen, kan inte läsa in.");
-        
         return Ok(())
     }
 
     *nr_of_medicines = first_line as i32;
-    println!("size direkt från filen: {}, ", first_line);
+    println!("Size direkt från filen: {}, ", first_line);
 
     let mut count : usize = 0;
     for line in reader.lines() {
