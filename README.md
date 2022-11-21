@@ -1,4 +1,4 @@
-# Exjobb2022_Grundläggande_programmering
+# Exjobb2022 Grundläggande programmering
 
 Installera go: https://go.dev/doc/install
 
