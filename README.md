@@ -1,6 +1,6 @@
 # Exjobb2022 Grundläggande programmering
 
-<img src="https://user-images.githubusercontent.com/62597920/213881519-789de5d1-5214-468e-b192-c8fb39d3b503.png" width="100" height="100"> <img src="https://user-images.githubusercontent.com/62597920/213881283-51925777-3d21-4168-b3bf-04d11bc30c36.png" width="100" height="100">
+<img src="https://user-images.githubusercontent.com/62597920/213881519-789de5d1-5214-468e-b192-c8fb39d3b503.png" width="200" height="200"> <img src="https://user-images.githubusercontent.com/62597920/213881283-51925777-3d21-4168-b3bf-04d11bc30c36.png" width="200" height="200">
 
 Installera go: https://go.dev/doc/install
 
