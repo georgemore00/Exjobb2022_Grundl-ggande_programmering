@@ -1,5 +1,5 @@
 /*
-MIN SEKVENS FÖR ATT LYCKAS MED LANDNINGEN
+SEKVENS FÖR ATT LYCKAS MED LANDNINGEN
 0
 0
 0
@@ -57,10 +57,6 @@ fn calc_new_velocity(current_velocity : f64, throttle: f64) -> f64 {
 }
 
 fn get_initial_message() -> String {
-    return String::from("
-    Lunar decent challenge!
-    You will pilot a lunar decent the last 250m.
-    Each turn represent 1-second decent time.
-    Set the throttle for each turn (0-100)
-    Time \t Height \t Velocity \t Throttle? \t")
+    return String::from("Lunar decent challenge!\nYou will pilot a lunar decent the last 250m.\nEach turn represent 1-second decent time.\n
+    Set the throttle for each turn (0-100)\nTime Height Velocity Throttle?\n")
 }
