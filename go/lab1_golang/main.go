@@ -6,8 +6,7 @@ import (
 )
 
 /*
-
-MIN SEKVENS FÖR ATT LYCKAS MED LANDNINGEN
+SEKVENS FÖR ATT LYCKAS MED LANDNINGEN
 0
 0
 0
@@ -67,9 +66,6 @@ func calcNewVelocity(currentVelocity float64, throttle float64) float64 {
 // Dock blev utskriften ful med multilines strängar
 // Och självklart vill man inte ha en extremt lång sträng på en rad.
 func getInitialMessage() string {
-	return "Lunar decent challenge!\n" +
-		"You will pilot a lunar decent the last 250m.\n" +
-		"Each turn represent 1-second decent time.\n" +
-		"Set the throttle for each turn (0-100)\n" +
-		"Time \t Height \t Velocity \t Throttle? \t"
+	return "Lunar decent challenge!\nYou will pilot a lunar decent the last 250m.\nEach turn represent 1-second decent time.\n" +
+		"Set the throttle for each turn (0-100)\nTime Height Velocity Throttle?\n"
 }
